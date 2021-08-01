@@ -8,10 +8,12 @@
 
 import UIKit
 
+let DomainURL = "https://www.orangevalleycaa.org/api/"
 class Music {
     
-    static func fetch() {
-        let urlString = "https://www.google.com/"
+    
+    static func fetch(withID id: Int) {
+        let urlString = DomainURL + "music/id/\(id)"
         
         if let url = URL.init(string: urlString) {
             let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
@@ -31,7 +33,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Music.fetch()
+        Music.fetch(withID: 1)
     }
 
     override func didReceiveMemoryWarning() {
